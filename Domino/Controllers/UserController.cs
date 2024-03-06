@@ -81,7 +81,7 @@ namespace Domino.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Error al generar el token. Error: " + ex.Message.ToString());
+                return StatusCode(500, "Ocurrió un error interno al verificar las fichas.");
             }
             
         }

@@ -72,7 +72,7 @@ namespace Domino.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Error al verificar las fichas. Error: " + ex.Message.ToString());
+                return StatusCode(500, "Ocurrió un error interno al verificar las fichas.");
             }
            
         }
