@@ -18,7 +18,31 @@ namespace CoreBusiness
             var primeraFicha = fichas[0];
             //Variable con lado B de la última ficha agregada a la lista
             var ladoActual = primeraFicha.LadoB;
-            fichasOrdenadas.Add(primeraFicha);
+            bool coincidio = false;
+
+            //validación de la primera ficha por ambas caras
+            for (int j = 1; j < fichas.Count; j++)
+            {
+                var fichaComparacion = fichas[j];
+
+                if (ladoActual == fichaComparacion.LadoA || ladoActual == fichaComparacion.LadoB)
+                {
+                    fichasOrdenadas.Add(primeraFicha);
+                    coincidio = true;
+                    break;
+                }
+                else if (primeraFicha.LadoA == fichaComparacion.LadoA || primeraFicha.LadoA == fichaComparacion.LadoB)
+                {
+                    fichasOrdenadas.Add(new Fichas { LadoA = primeraFicha.LadoB, LadoB = primeraFicha.LadoA });
+                    coincidio = true;
+                    ladoActual = primeraFicha.LadoA;
+                    break;
+                }
+            }
+
+            //si la primera ficha no encuentra coincidencias con el resto no se puede armar la cadena
+            if (!coincidio) return null;
+
 
             int i = 1;
             bool fichaValidada = false;
