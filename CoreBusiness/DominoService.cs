@@ -19,6 +19,8 @@ namespace CoreBusiness
             //Variable con lado B de la última ficha agregada a la lista
             var ladoActual = primeraFicha.LadoB;
             bool coincidio = false;
+            bool giroFicha1 = false;
+            int primeraLadoA = 0;
 
             //validación de la primera ficha por ambas caras
             for (int j = 1; j < fichas.Count; j++)
@@ -34,6 +36,7 @@ namespace CoreBusiness
                 else if (primeraFicha.LadoA == fichaComparacion.LadoA || primeraFicha.LadoA == fichaComparacion.LadoB)
                 {
                     fichasOrdenadas.Add(new Fichas { LadoA = primeraFicha.LadoB, LadoB = primeraFicha.LadoA });
+                    giroFicha1 = true;
                     coincidio = true;
                     ladoActual = primeraFicha.LadoA;
                     break;
@@ -90,7 +93,10 @@ namespace CoreBusiness
             }
 
             // Verificar si el último lado coincide con el lado inicial
-            if (ladoActual == primeraFicha.LadoA)
+            if (giroFicha1) primeraLadoA = primeraFicha.LadoB;
+            else primeraLadoA = primeraFicha.LadoA;
+
+            if (ladoActual == primeraLadoA)
             {
                 return fichasOrdenadas;
             }
