@@ -111,18 +111,15 @@ namespace CoreBusiness
                 else
                 {
                     countIntentos++;
+                    Fichas primerElemento = listGlobal[0];
+                    listGlobal.RemoveAt(0);
+                    listGlobal.Add(primerElemento);
                     fichas = listGlobal.ToList();
                     fichasOrdenadas = new List<Fichas>();
-                    if (countIntentos < fichasTotal)
+                    if (countIntentos == fichasTotal)
                     {
-                        Fichas ficha = fichas[countIntentos];
-                        fichas.RemoveAt(countIntentos);
-                        fichas.Insert(0, ficha);
-                    }
-                    else
-                    {
-                        break; 
-                    }
+                        break;
+                    }                  
                 }
 
             } while (!procesoExitoso );
