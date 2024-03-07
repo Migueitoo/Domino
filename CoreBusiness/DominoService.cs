@@ -103,11 +103,12 @@ namespace CoreBusiness
                 if (giroFicha1) primeraLadoA = primeraFicha.LadoB;
                 else primeraLadoA = primeraFicha.LadoA;
 
-                //validación de la primera ficha por ambas caras
+                //Si organiza exitosamente las fichas
                 if (ladoActual == primeraLadoA && fichasOrdenadas.Count() == fichasTotal)
                 {
                     procesoExitoso = true;               
                 }
+                //Si no logra continuar organizando, envía la primera ficha al final
                 else
                 {
                     countIntentos++;
