@@ -72,7 +72,7 @@ namespace Domino.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Ocurrió un error interno al verificar las fichas.");
+                return StatusCode(500, "Ocurrió un error interno al verificar las fichas. Mensaje: " + ex.Message.ToString());
             }
            
         }
